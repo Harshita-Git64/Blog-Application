@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Login Page {% endblock %}
+{% block loginactive %} active {% endblock loginactive %}
+
+{% block css %}
+{% endblock %}
+{% block body %}
+
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+      <span aria-hidden="True">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+</div>
+{% endfor %}
+
+<br>
+<h5 style="text-align:center;"><b>Login Here</b></h5>
+<hr>
+<form action="/login/" method="POST"> {% csrf_token %}
+  <div class="container mt-5">
+  <div class="mb-3">
+    <label for="username" class="form-label">Username*</label>
+    <input type="text" class="form-control" id="username" name="username" placeholder="choose a unique Username" required>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password*</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Password" required>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+<br>
+<div class="modal-footer">
+</div>
+{% endblock %}

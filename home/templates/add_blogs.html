@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Add blogs {% endblock %}
+{% block add_blogsactive %} active {% endblock add_blogsactive %}
+
+{% block css %}
+{% endblock %}
+{% block body %}
+<br>
+<h5 style="text-align:center;"><b>Add Blog</b></h5>
+<hr>
+<form action="/add_blogs/" enctype="multipart/form-data" method="POST"> {% csrf_token %}
+<div class="container mt-4">
+{{ form.as_p }}
+<button class="btn btn-primary">Add Blog</button>
+</div>
+</form>
+
+<br>
+<div class="modal-footer">
+</div>
+{% endblock %}
+{% block js %}
+<script>
+    {% if alert %}
+    alert('Your Blog is added successfully.');
+    document.location = '/';
+    {% endif %}
+</script>
+{% endblock %}
+
+

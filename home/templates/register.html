@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %} Registeration Page {% endblock %}
+{% block registeractive %} active {% endblock registeractive %}
+
+{% block css %}
+{% endblock %}
+{% block body %}
+
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+      <span aria-hidden="True">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+</div>
+{% endfor %}
+
+<br>
+<h5 style="text-align:center;"><b>Register Here</b></h5>
+<hr>
+<form action="/register/" method="POST"> {% csrf_token %}
+    <div class="container mt-3">
+        <div class="mb-3">
+            <label for="username"  class="form-label">Username*</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="choose a unique username" required>
+        </div>
+        <div class="mb-3">
+            <label for="first_name">First Name*</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter your First Name" required>
+        </div>
+        <div class="mb-3">
+            <label for="last_name">Last Name*</label>
+            <input type="text" class="form-control" id="last_name" name="last_name"  placeholder="Enter your Last Name" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address*</label>
+            <input type="email" class="form-control" id="email" name="email"  placeholder="name@example.com" required>
+        </div>
+        <div class="mb-3">
+            <label for="password1" class="form-label">Choose a Password*</label>
+            <input type="password" class="form-control" id="password1" name="password1"  placeholder="Choose your Password" required>
+            <ul>
+                <li>Password must contain atleast 1 digit.</li>
+                <li>Password must contain atleast 5 characters.</li>
+                <li>Password must contain atleast one special symbol</li>
+                <li>Password must contain one uppercase and one lowercase letter.</li>
+            </ul>
+        </div>
+        <div class="mb-3">
+            <label for="password2" class="form-label">Confirm Password*</label>
+            <input type="password" class="form-control" id="password2" name="password2"  placeholder="Enter your Password again" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+<br>
+<div class="modal-footer">
+</div>
+
+{% endblock %}
